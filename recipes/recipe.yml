@@ -62,6 +62,7 @@ modules:
         - bazaar
         - krunner-bazaar
         - libdex-0.9.1
+        - sway
   - type: script
     scripts:
       - selinux.sh
