@@ -17,9 +17,16 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: os-release
+    properties:
+      ID: AuroraOtarinae
+      NAME: Aurora-Otarrinae
+      PRETTY_NAME: WinnieOS
+
   - type: dnf
     repos:
       cleanup: true
+      install-weak-deps: false
       files: 
         - https://repository.mullvad.net/rpm/stable/mullvad.repo
         - https://repo.secureblue.dev/secureblue.repo
@@ -67,6 +74,12 @@ modules:
         - i3blocks
         - proxmox-backup-client
         - gparted
+        - swaylock
+        - swayidle
+        - slurp
+        - sway-systemd
+        - xdg-desktop-portal-wlr
+        - grim
   - type: script
     scripts:
       - selinux.sh
