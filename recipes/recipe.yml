@@ -80,7 +80,19 @@ modules:
   - type: script
     scripts:
       - selinux.sh
+      - sway.sh
 
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
+
+  - type: dnf
+    repos:
+      cleanup: true
+      files: 
+        - https://repository.mullvad.net/rpm/stable/mullvad.repo
+        - https://repo.secureblue.dev/secureblue.repo
+      copr:
+        - ublue-os/staging
+        - ublue-os/packages
+        - swayfx/swayfx
