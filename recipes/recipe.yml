@@ -78,6 +78,10 @@ modules:
         - xdg-desktop-portal-wlr
         - grim
         - nvidia-container-toolkit
+        # DEV
+        - cmake
+        - ninja-build
+        - gtk3-devel
   - type: script
     scripts:
       - selinux.sh
