@@ -82,6 +82,11 @@ modules:
         - cmake
         - ninja-build
         - gtk3-devel
+        - libstdc++-static
+        - mesa-libGLU
+        - clang
+        - pkg-config
+        - mesa-libGLU-devel
   - type: script
     scripts:
       - selinux.sh
