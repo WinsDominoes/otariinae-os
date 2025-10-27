@@ -39,7 +39,7 @@ modules:
     install:
       install-weak-deps: false
       packages:
-        - mullvad-vpn
+#        - mullvad-vpn
         - trivalent
 #        - perl-File-Copy
 #        - fontconfig.i686
