@@ -88,7 +88,7 @@ modules:
         # - pkg-config
         # - mesa-libGLU-devel
         # EXTRA SHIT
-        - wireshark
+        - wireshark-qt
   - type: script
     scripts:
       - selinux.sh
