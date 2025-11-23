@@ -77,7 +77,7 @@ modules:
         - sway-systemd
         - xdg-desktop-portal-wlr
         - grim
-        - nvidia-container-toolkit
+        # - nvidia-container-toolkit
         # DEV
         - cmake
         - ninja-build
@@ -85,8 +85,8 @@ modules:
         - libstdc++-static
         - mesa-libGLU
         - clang
-        - pkg-config
-        - mesa-libGLU-devel
+        # - pkg-config
+        # - mesa-libGLU-devel
         # EXTRA SHIT
         - wireshark
   - type: script
