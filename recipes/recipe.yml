@@ -89,12 +89,14 @@ modules:
         # - mesa-libGLU-devel
         # EXTRA SHIT
         - wireshark
+        - kernel-headers
+        - v4l2loopback
   - type: script
     scripts:
       - selinux.sh
 #      - sway.sh
       - ollama.sh
-
+      - droidcam.sh
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
