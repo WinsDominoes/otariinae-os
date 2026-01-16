@@ -27,7 +27,7 @@ modules:
     repos:
       cleanup: true
       files: 
-        # - https://repository.mullvad.net/rpm/stable/mullvad.repo
+        - https://repository.mullvad.net/rpm/stable/mullvad.repo
         - https://repo.secureblue.dev/secureblue.repo
       copr:
         - ublue-os/staging
@@ -41,7 +41,7 @@ modules:
     install:
       install-weak-deps: false
       packages:
-#        - mullvad-vpn
+        - mullvad-vpn
         - trivalent
         - trivalent-subresource-filter
         - run0edit
