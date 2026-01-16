@@ -36,8 +36,6 @@ modules:
         - derenderkeks/proxmox-backup-client
         - secureblue/run0edit
         - secureblue/trivalent
-    optfix:
-      - Mullad VPN
     install:
       install-weak-deps: false
       packages:
