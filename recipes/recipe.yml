@@ -6,8 +6,8 @@ name: otariinae-os
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/aurora-dx-nvidia-open
-image-version: stable-daily # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/blue-build/base-images/fedora-base-nvidia
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -19,16 +19,30 @@ modules:
 
   - type: os-release
     properties:
-      ID: AuroraOtarinae
-      NAME: Aurora-Otarrinae
+      ID: Otarinae
+      NAME: Otarrinae
       PRETTY_NAME: WinnieOS
-
+  - type: containerfile
+    snippets:
+      - COPY --from=ghcr.io/ublue-os/brew:latest /system_files /
+      - RUN --mount=type=cache,dst=/var/cache \
+            --mount=type=cache,dst=/var/log \
+            --mount=type=tmpfs,dst=/tmp \
+            /usr/bin/systemctl preset brew-setup.service && \
+            /usr/bin/systemctl preset brew-update.timer && \
+            /usr/bin/systemctl preset brew-upgrade.timer
+  - type: copy
+    from: ghcr.io/projectbluefin/common:latest
+    src: /system_files/shared
+    dest: /
   - type: dnf
     repos:
       cleanup: true
       files: 
         - https://repository.mullvad.net/rpm/stable/mullvad.repo
         - https://repo.secureblue.dev/secureblue.repo
+        - https://download.docker.com/linux/fedora/docker-ce.repo
+        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
       copr:
         - ublue-os/staging
         - ublue-os/packages
@@ -44,6 +58,8 @@ modules:
         - trivalent-subresource-filter
         - run0edit
         - osbuild-selinux
+        - docker
+        - tailscale
 #        - perl-File-Copy
 #        - fontconfig.i686
 #        - fontconfig.x86_64
@@ -93,23 +109,53 @@ modules:
         # EXTRA SHIT
         - wireshark
         - kernel-headers
-        - v4l2loopback
+    replace:
+      - from-repo: copr:copr.fedorainfracloud.org:ublue-os:flatpak-test
+        packages:
+          - flatpak
+          - flatpak-libs
+          - flatpak-session-helper
+      - from-repo: copr:copr.fedorainfracloud.org:amyiscoolz:komnenos-logos
+        packages:
+          - old: fedora-logos
+            new: komnenos-logos
+    group-install:
+      with-optional: false
+      packages:
+        - kde-desktop-environment
+    remove:
+      packages:
+        - appimage-thumbnailer
+        - plasma-discover
+        - PackageKit*
+  - type: containerfile
+    snippets:
+      - RUN dnf5 install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+      - COPY --from=ghcr.io/ublue-os/akmods:main-43 / /tmp/akmods-common
+      - RUN find /tmp/akmods-common
+      - RUN dnf5 install -y /tmp/akmods-common/rpms/ublue-os/ublue-os-akmods*.rpm --skip-broken
+      - RUN dnf5 install -y /tmp/akmods-common/rpms/kmods/kmod-v4l2loopback*.rpm --skip-broken
+      - RUN dnf5 install -y /tmp/akmods-common/rpms/kmods/kmod-xone*.rpm --skip-broken
+      - RUN dnf5 install -y /tmp/akmods-common/rpms/kmods/kmod-framework-laptop*.rpm --skip-broken
+      - RUN dnf5 install -y /tmp/akmods-common/rpms/kmods/kmod-openrazer*.rpm --skip-broken
   - type: script
     scripts:
       - selinux.sh
 #      - sway.sh
       - droidcam.sh
+  - type: systemd
+    # this example disables automatic flatpak updates and enables a custom service unit for all users
+    system:
+      enabled:
+        - docker.socket
+        - sddm.service
+        - flatpak.preinstall.service
+        - rechunker-group-fix.service
+        - tailscaled
+    user:
+      enabled:
+        - my-custom.service
+      disabled:
+        - flatpak-user-update.timer
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
-
-
-  - type: dnf
-    repos:
-      cleanup: true
-      files: 
-        - https://repository.mullvad.net/rpm/stable/mullvad.repo
-        - https://repo.secureblue.dev/secureblue.repo
-      copr:
-        - ublue-os/staging
-        - ublue-os/packages
-        - swayfx/swayfx
