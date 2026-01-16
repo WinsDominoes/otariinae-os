@@ -25,12 +25,6 @@ modules:
   - type: containerfile
     snippets:
       - COPY --from=ghcr.io/ublue-os/brew:latest /system_files /
-      - RUN --mount=type=cache,dst=/var/cache \
-            --mount=type=cache,dst=/var/log \
-            --mount=type=tmpfs,dst=/tmp \
-            /usr/bin/systemctl preset brew-setup.service && \
-            /usr/bin/systemctl preset brew-update.timer && \
-            /usr/bin/systemctl preset brew-upgrade.timer
   - type: copy
     from: ghcr.io/projectbluefin/common:latest
     src: /system_files/shared
@@ -54,12 +48,19 @@ modules:
       install-weak-deps: false
       packages:
         - mullvad-vpn
+        - uupd
+        - ublue-os-udev-rules
         - trivalent
         - trivalent-subresource-filter
         - run0edit
         - osbuild-selinux
-        - docker
+        - docker-ce
         - tailscale
+        - containerd.io
+        - docker-buildx-plugin
+        - docker-ce-cli
+        - docker-compose-plugin
+        - docker-model-plugin
 #        - perl-File-Copy
 #        - fontconfig.i686
 #        - fontconfig.x86_64
@@ -151,7 +152,11 @@ modules:
         - sddm.service
         - flatpak.preinstall.service
         - rechunker-group-fix.service
-        - tailscaled
+        - tailscaled.service
+        - brew-upgrade.timer
+        - brew-setup.service
+        - uupd.timer
+        - brew-update.timer
     user:
       enabled:
         - my-custom.service
