@@ -156,9 +156,7 @@ modules:
         - brew-update.timer
     user:
       enabled:
-        - my-custom.service
-      disabled:
-        - flatpak-user-update.timer
+        - bazaar.service
   - type: os-release
     properties:
       ID: Otarinae
