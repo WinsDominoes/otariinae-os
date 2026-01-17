@@ -46,7 +46,9 @@ modules:
       packages:
         - mullvad-vpn
         - uupd
-        - ublue-os-udev-rules
+        - git
+        - gcc
+        - curl
         - trivalent
         - trivalent-subresource-filter
         - run0edit
