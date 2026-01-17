@@ -143,6 +143,7 @@ modules:
       - selinux.sh
 #      - sway.sh
       - droidcam.sh
+      - setswaynvidiaenvironment.sh
   - type: systemd
     # this example disables automatic flatpak updates and enables a custom service unit for all users
     system:
