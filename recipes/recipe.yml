@@ -147,7 +147,7 @@ modules:
       enabled:
         - docker.socket
         - sddm.service
-        - flatpak.preinstall.service
+        - flatpak-preinstall.service
         - rechunker-group-fix.service
         - tailscaled.service
         - brew-upgrade.timer
