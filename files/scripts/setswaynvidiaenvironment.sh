@@ -34,7 +34,7 @@
 
 set -oue pipefail
 
-rm /etc/sway/environment
+rm -f /etc/sway/environment
 
 # shellcheck disable=SC2016
 echo '
