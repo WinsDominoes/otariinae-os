@@ -34,11 +34,13 @@ modules:
         - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
       copr:
         - ublue-os/staging
+        - ublue-os/flatpak-test
         - ublue-os/packages
         - swayfx/swayfx
         - derenderkeks/proxmox-backup-client
         - secureblue/run0edit
         - secureblue/trivalent
+        - amyiscoolz/komnenos
     install:
       install-weak-deps: false
       packages:
