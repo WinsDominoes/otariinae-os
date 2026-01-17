@@ -125,7 +125,7 @@ modules:
       packages:
         - appimage-thumbnailer
         - plasma-discover
-        - PackageKit*
+        - PackageKit
   - type: containerfile
     snippets:
       - RUN dnf5 install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
