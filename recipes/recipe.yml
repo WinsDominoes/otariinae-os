@@ -6,8 +6,8 @@ name: otariinae-os
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/blue-build/base-images/fedora-base-nvidia-open
-image-version: pr-22-43 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/blue-build/base-images/fedora-kinoite-nvidia-open
+image-version: 43 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -60,6 +60,7 @@ modules:
         - docker-ce-cli
         - docker-compose-plugin
         - docker-model-plugin
+        - ptyxis
 #        - perl-File-Copy
 #        - fontconfig.i686
 #        - fontconfig.x86_64
@@ -119,15 +120,12 @@ modules:
         packages:
           - old: fedora-logos
             new: komnenos-logos
-    group-install:
-      with-optional: false
-      packages:
-        - kde-desktop-environment
     remove:
       packages:
         - appimage-thumbnailer
         - plasma-discover
         - PackageKit
+        - konsole
   - type: containerfile
     snippets:
       - RUN dnf5 install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
