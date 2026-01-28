@@ -110,6 +110,10 @@ modules:
         # EXTRA SHIT
         - wireshark
         - kernel-headers
+        - vulkan-tools
+        - sysbench
+        - iperf3
+        - hardinfo2
     replace:
       - from-repo: copr:copr.fedorainfracloud.org:ublue-os:flatpak-test
         packages:
@@ -154,6 +158,7 @@ modules:
         - brew-upgrade.timer
         - brew-setup.service
         - uupd.timer
+        - hardinfo2.service
         - brew-update.timer
     user:
       enabled:
