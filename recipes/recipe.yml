@@ -51,6 +51,7 @@ modules:
         - gcc
         - curl
         - trivalent
+        - trivalent-selinux
         - trivalent-subresource-filter
         - run0edit
         - osbuild-selinux
@@ -143,7 +144,7 @@ modules:
       - RUN dnf5 install -y /tmp/akmods-common/rpms/kmods/kmod-openrazer*.rpm --skip-broken
   - type: script
     scripts:
-      - selinux.sh
+#      - selinux.sh
 #      - sway.sh
       - cdrtools.sh
 #      - setswaynvidiaenvironment.sh
