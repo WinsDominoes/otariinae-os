@@ -115,6 +115,7 @@ modules:
         - sysbench
         - iperf3
         - hardinfo2
+        - waybar
     replace:
       - from-repo: copr:copr.fedorainfracloud.org:ublue-os:flatpak-test
         packages:
