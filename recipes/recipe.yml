@@ -34,7 +34,6 @@ modules:
         - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
       copr:
         - ublue-os/staging
-        - ublue-os/flatpak-test
         - ublue-os/packages
         - swayfx/swayfx
         - derenderkeks/proxmox-backup-client
@@ -119,11 +118,6 @@ modules:
         - waybar
         - wireshark
     replace:
-      - from-repo: copr:copr.fedorainfracloud.org:ublue-os:flatpak-test
-        packages:
-          - flatpak
-          - flatpak-libs
-          - flatpak-session-helper
       - from-repo: copr:copr.fedorainfracloud.org:amyiscoolz:komnenos-logos
         packages:
           - old: fedora-logos
