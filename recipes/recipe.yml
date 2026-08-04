@@ -116,7 +116,6 @@ modules:
         - iperf3
         - hardinfo2
         - waybar
-        - wireshark
     replace:
       - from-repo: copr:copr.fedorainfracloud.org:amyiscoolz:komnenos-logos
         packages:
