@@ -40,6 +40,7 @@ modules:
         - secureblue/run0edit
         - secureblue/trivalent
         - amyiscoolz/komnenos-logos
+        - lizardbyte/stable
     install:
       install-weak-deps: false
       packages:
@@ -116,6 +117,7 @@ modules:
         - iperf3
         - hardinfo2
         - waybar
+        - Sunshine
     replace:
       - from-repo: copr:copr.fedorainfracloud.org:amyiscoolz:komnenos-logos
         packages:
