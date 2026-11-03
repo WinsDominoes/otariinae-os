@@ -41,6 +41,7 @@ modules:
         - secureblue/trivalent
         - amyiscoolz/komnenos-logos
         - lizardbyte/stable
+        - dsommers/openvpn3
     install:
       install-weak-deps: false
       packages:
@@ -118,6 +119,7 @@ modules:
         - hardinfo2
         - waybar
         - Sunshine
+        - openvpn3-client
     replace:
       - from-repo: copr:copr.fedorainfracloud.org:amyiscoolz:komnenos-logos
         packages:
