@@ -120,6 +120,7 @@ modules:
         - waybar
         - Sunshine
         - openvpn3-client
+        - blender
     replace:
       - from-repo: copr:copr.fedorainfracloud.org:amyiscoolz:komnenos-logos
         packages:
