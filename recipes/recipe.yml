@@ -121,6 +121,8 @@ modules:
         - Sunshine
         - openvpn3-client
         - blender
+        - intel-compute-runtime
+        - oneapi-level-zero
     replace:
       - from-repo: copr:copr.fedorainfracloud.org:amyiscoolz:komnenos-logos
         packages:
