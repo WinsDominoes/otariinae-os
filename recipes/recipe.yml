@@ -123,6 +123,7 @@ modules:
         - blender
         - intel-compute-runtime
         - oneapi-level-zero
+        - intel-level-zero-gpu-raytracing
     replace:
       - from-repo: copr:copr.fedorainfracloud.org:amyiscoolz:komnenos-logos
         packages:
